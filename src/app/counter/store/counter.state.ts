@@ -2,6 +2,6 @@ export interface InitialState {
   counter: number;
 }
 
-export const initialState = {
+export const initialState: InitialState = {
   counter: 0,
 };

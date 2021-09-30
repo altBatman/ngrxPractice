@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./counter-output.component.scss'],
 })
 export class CounterOutputComponent implements OnInit {
-  counter: any;
+  counter: number;
 
   constructor(private store: Store<{ counter: InitialState }>) {}
 
