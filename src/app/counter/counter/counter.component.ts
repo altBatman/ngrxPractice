@@ -9,8 +9,4 @@ export class CounterComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  onIncrement() {}
-  onDecrement() {}
-  onReset() {}
 }
