@@ -1,3 +1,4 @@
+import { AddPostComponent } from './posts-component/add-post/add-post.component';
 import { PostsComponent } from './posts-component/posts.component';
 import { CounterComponent } from './counter/counter/counter.component';
 import { HomeComponent } from './home-component/home-component';
@@ -15,7 +16,16 @@ const routes: Routes = [
   },
   {
     path: 'posts',
-    component: PostsComponent,
+    children: [
+      {
+        path: '',
+        component: PostsComponent,
+      },
+      {
+        path: 'new-post',
+        component: AddPostComponent,
+      },
+    ],
   },
   {
     path: '**',

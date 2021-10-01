@@ -1,3 +1,4 @@
+import { appReducer } from './app.state';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
@@ -7,15 +8,14 @@ import { AppComponent } from './app.component';
 import { CounterButtonsComponent } from './counter/counter-buttons/counter-buttons.component';
 import { CounterOutputComponent } from './counter/counter-output/counter-output.component';
 import { CounterComponent } from './counter/counter/counter.component';
-import { counterReducer } from './counter/store/counter.reducer';
 import { CounterCustomAddComponent } from './counter/counter-custom-add/counter-custom-add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home-component/home-component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { PostsComponent } from './posts-component/posts.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-import { postReducer } from './posts-component/state/post.reducer';
+import { AddPostComponent } from './posts-component/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,14 @@ import { postReducer } from './posts-component/state/post.reducer';
     HomeComponent,
     HeaderComponent,
     PostsComponent,
+    AddPostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
-    StoreModule.forRoot({ counter: counterReducer, posts: postReducer }),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

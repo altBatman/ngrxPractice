@@ -1,14 +1,10 @@
-export interface Post {
-  id: number;
-  post: string;
-  title: string;
-}
+import { Post } from '../models/post.model';
 
 export interface PostState {
   posts: Post[];
 }
 
-export const postState: PostState = {
+export const initialState: PostState = {
   posts: [
     {
       id: 1,

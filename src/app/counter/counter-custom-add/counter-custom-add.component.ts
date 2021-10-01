@@ -1,8 +1,8 @@
-import { authorSelector } from './../store/counter.selectors';
+import { getAuthorSelector } from './../store/counter.selectors';
 import { addValue, changeAuthor } from './../store/counter.actions';
-import { CounterState } from './../store/counter.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'app-counter-custom-add',
@@ -13,10 +13,10 @@ export class CounterCustomAddComponent implements OnInit {
   public input: string;
   author: string;
 
-  constructor(private store: Store<{ counter: CounterState }>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.store.select(authorSelector).subscribe((author) => {
+    this.store.select(getAuthorSelector).subscribe((author) => {
       this.author = author;
     });
   }
