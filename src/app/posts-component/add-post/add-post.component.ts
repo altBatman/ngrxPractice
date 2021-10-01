@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { addPost } from '../state/post.actions';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-post',
@@ -12,7 +13,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddPostComponent implements OnInit {
   postForm: FormGroup;
-  constructor(private store: Store<AppState>, private fb: FormBuilder) {}
+  constructor(
+    private store: Store<AppState>,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.postForm = this.fb.group({
@@ -26,9 +31,10 @@ export class AddPostComponent implements OnInit {
     const post: Post = {
       id: this.postForm.value['id'],
       title: this.postForm.value['title'],
-      post: this.postForm.value['post'],
+      description: this.postForm.value['post'],
     };
     this.store.dispatch(addPost({ post }));
     this.postForm.reset();
+    this.router.navigate(['/', 'posts']);
   }
 }
