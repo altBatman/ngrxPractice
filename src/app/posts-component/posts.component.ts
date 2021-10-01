@@ -1,5 +1,5 @@
 import { Post } from './models/post.model';
-import { getPost } from './state/post.selector';
+import { getPosts } from './state/post.selector';
 import { AppState } from './../app.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +16,6 @@ export class PostsComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.posts$ = this.store.select(getPost);
+    this.posts$ = this.store.select(getPosts);
   }
 }

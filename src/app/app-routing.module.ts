@@ -1,3 +1,4 @@
+import { EditPostComponent } from './posts-component/edit-post/edit-post.component';
 import { AddPostComponent } from './posts-component/add-post/add-post.component';
 import { PostsComponent } from './posts-component/posts.component';
 import { CounterComponent } from './counter/counter/counter.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'new-post',
         component: AddPostComponent,
+      },
+      {
+        path: 'edit/:id',
+        component: EditPostComponent,
       },
     ],
   },

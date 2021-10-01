@@ -1,6 +1,10 @@
 <router-outlet></router-outlet>
 <br />
-<button class="btn btn-primary" [routerLink]="['new-post']">New Post</button>
+<div class="d-flex flex-row-reverse">
+  <button class="btn btn-primary mx-2" [routerLink]="['new-post']">
+    New Post
+  </button>
+</div>
 <hr />
 <h3>All Posts</h3>
 <div class="row card-group">
@@ -12,7 +16,7 @@
         <p class="card-text">
           {{ post.description }}
         </p>
-        <a class="card-link">Edit</a>
+        <a [routerLink]="['edit', post.id]" class="card-link">Edit</a>
         <a class="card-link">Delete</a>
       </div>
     </div>
