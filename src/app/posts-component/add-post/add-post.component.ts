@@ -23,7 +23,7 @@ export class AddPostComponent implements OnInit {
     this.postForm = this.fb.group({
       id: [Math.floor(Math.random() * 1000), Validators.required],
       title: ['', Validators.required],
-      post: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 
@@ -31,7 +31,7 @@ export class AddPostComponent implements OnInit {
     const post: Post = {
       id: this.postForm.value['id'],
       title: this.postForm.value['title'],
-      description: this.postForm.value['post'],
+      description: this.postForm.value['description'],
     };
     this.store.dispatch(addPost({ post }));
     this.postForm.reset();

@@ -3,6 +3,12 @@
     <h3>Add new post</h3>
     <br />
     <form class="form-group" [formGroup]="postForm" (ngSubmit)="addPost()">
+      <div class="d-flex flex-row-reverse">
+        <button type="submit" class="btn btn-primary mx-2">Save Post</button>
+        <button type="button" routerLink="/posts" class="btn btn-danger mx-2">
+          Cancel
+        </button>
+      </div>
       <div class="mb-3 form-control-lg">
         <input
           type="text"
@@ -17,17 +23,11 @@
           class="form-control"
           id="description"
           rows="15"
-          formControlName="post"
+          formControlName="description"
           placeholder="Description"
         ></textarea>
       </div>
       <br />
-      <div class="d-flex flex-row-reverse">
-        <button type="submit" class="btn btn-primary mx-2">Save Post</button>
-        <button type="button" routerLink="/posts" class="btn btn-danger mx-2">
-          Cancel
-        </button>
-      </div>
     </form>
   </div>
 </div>

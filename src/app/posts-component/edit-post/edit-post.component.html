@@ -1,1 +1,33 @@
-<p>edit-post works!</p>
+<div class="row my-4">
+  <div class="col-md-12">
+    <h3>Edit Post</h3>
+    <br />
+    <form class="form-group" [formGroup]="postForm" (ngSubmit)="savePost()">
+      <div class="d-flex flex-row-reverse">
+        <button type="submit" class="btn btn-primary mx-2">Save Post</button>
+        <button type="button" routerLink="/posts" class="btn btn-danger mx-2">
+          Cancel
+        </button>
+      </div>
+      <div class="mb-3 form-control-lg">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          placeholder="Title"
+        />
+      </div>
+
+      <div class="form-outline mx-3">
+        <textarea
+          class="form-control"
+          id="description"
+          rows="15"
+          formControlName="description"
+          placeholder="Description"
+        ></textarea>
+      </div>
+      <br />
+    </form>
+  </div>
+</div>
