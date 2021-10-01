@@ -1,9 +1,9 @@
-export interface InitialState {
+export interface CounterState {
   counter: number;
   author: string;
 }
 
-export const initialState: InitialState = {
-  counter: 0,
-  author: 'Rajesh Mangena',
+export const counterState: CounterState = {
+  counter: 20,
+  author: 'Rajesh',
 };

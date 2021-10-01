@@ -1,16 +1,22 @@
-import { increment, decrement, reset, addValue } from './counter.actions';
+import {
+  increment,
+  decrement,
+  reset,
+  addValue,
+  changeAuthor,
+} from './counter.actions';
 import { createReducer, on } from '@ngrx/store';
-import { initialState, InitialState } from './counter.state';
+import { counterState, CounterState } from './counter.state';
 
 const _counterReducer = createReducer(
-  initialState,
-  on(increment, (state: InitialState) => {
+  counterState,
+  on(increment, (state: CounterState) => {
     return {
       ...state,
       counter: state.counter + 1,
     };
   }),
-  on(decrement, (state: InitialState) => {
+  on(decrement, (state: CounterState) => {
     let counter;
     if (state.counter > 0) {
       counter = state.counter - 1;
@@ -22,16 +28,22 @@ const _counterReducer = createReducer(
       counter: counter,
     };
   }),
-  on(reset, (state: InitialState) => {
+  on(reset, (state: CounterState) => {
     return {
       ...state,
       counter: 0,
     };
   }),
-  on(addValue, (state: InitialState, action) => {
+  on(addValue, (state: CounterState, action) => {
     return {
       ...state,
       counter: state.counter + action.value,
+    };
+  }),
+  on(changeAuthor, (state) => {
+    return {
+      ...state,
+      author: state.author === 'Mangena' ? 'Rajesh' : 'Mangena',
     };
   })
 );

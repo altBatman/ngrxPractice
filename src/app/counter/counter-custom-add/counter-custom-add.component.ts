@@ -1,6 +1,6 @@
 import { authorSelector } from './../store/counter.selectors';
-import { addValue } from './../store/counter.actions';
-import { InitialState } from './../store/counter.state';
+import { addValue, changeAuthor } from './../store/counter.actions';
+import { CounterState } from './../store/counter.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +13,7 @@ export class CounterCustomAddComponent implements OnInit {
   public input: string;
   author: string;
 
-  constructor(private store: Store<{ counter: InitialState }>) {}
+  constructor(private store: Store<{ counter: CounterState }>) {}
 
   ngOnInit(): void {
     this.store.select(authorSelector).subscribe((author) => {
@@ -24,6 +24,7 @@ export class CounterCustomAddComponent implements OnInit {
   addCustomValue() {
     if (!isNaN(+this.input)) {
       this.store.dispatch(addValue({ value: +this.input }));
+      this.store.dispatch(changeAuthor());
     }
     this.input = '0';
   }
