@@ -27,9 +27,12 @@ const _postreducer = createReducer(
    * * Remember the state should be immutable
    */
   on(deletePost, (state, action) => {
+    const filteredPosts = state.posts.filter((post) => {
+      return post.id !== action.id;
+    });
     return {
       ...state,
-      posts: [...state.posts],
+      posts: [...filteredPosts],
     };
   })
 );
