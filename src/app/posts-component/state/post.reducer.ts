@@ -1,4 +1,4 @@
-import { addPost, deletePost, savePost } from './post.actions';
+import { addPost, deletePost, editPost } from './post.actions';
 import { createReducer, on } from '@ngrx/store';
 import { initialState } from './post.state';
 
@@ -11,21 +11,18 @@ const _postreducer = createReducer(
     };
   }),
 
-  /**
-   * TODO: Have to save/edit the post
-   * * Remember the state should be immutable
-   */
-  on(savePost, (state, action) => {
+  on(editPost, (state, action) => {
+    const index = state.posts.findIndex((post) => {
+      return post.id === action.post.id;
+    });
+    let editedPosts = [...state.posts];
+    editedPosts.splice(index, 1, { ...action.post });
     return {
       ...state,
-      posts: [...state.posts],
+      posts: [...editedPosts],
     };
   }),
 
-  /**
-   * TODO: Have to find and delete the post by action.id
-   * * Remember the state should be immutable
-   */
   on(deletePost, (state, action) => {
     const filteredPosts = state.posts.filter((post) => {
       return post.id !== action.id;

@@ -2,10 +2,11 @@ import { Post } from './../models/post.model';
 import { getPostById } from './../state/post.selector';
 import { AppState } from './../../app.state';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { editPost } from '../state/post.actions';
 
 @Component({
   selector: 'app-edit-post',
@@ -20,6 +21,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private store: Store<AppState>,
     private fb: FormBuilder
   ) {
@@ -47,6 +49,12 @@ export class EditPostComponent implements OnInit, OnDestroy {
   }
 
   savePost() {
-    console.log(this.postForm.value);
+    const post: Post = {
+      id: this.postForm.value['id'],
+      title: this.postForm.value['title'],
+      description: this.postForm.value['description'],
+    };
+    this.store.dispatch(editPost({ post }));
+    this.router.navigate(['/', 'posts']);
   }
 }
