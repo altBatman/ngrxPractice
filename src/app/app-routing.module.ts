@@ -1,7 +1,7 @@
+import { PostsModule } from './posts-component/posts.module';
 import { EditPostComponent } from './posts-component/edit-post/edit-post.component';
 import { AddPostComponent } from './posts-component/add-post/add-post.component';
 import { PostsComponent } from './posts-component/posts.component';
-import { CounterComponent } from './counter/counter/counter.component';
 import { HomeComponent } from './home-component/home-component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,24 +13,13 @@ const routes: Routes = [
   },
   {
     path: 'counter',
-    component: CounterComponent,
+    loadChildren: () =>
+      import('./counter/counter.module').then((m) => m.CounterModule),
   },
   {
     path: 'posts',
-    children: [
-      {
-        path: '',
-        component: PostsComponent,
-      },
-      {
-        path: 'new-post',
-        component: AddPostComponent,
-      },
-      {
-        path: 'edit/:id',
-        component: EditPostComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./posts-component/posts.module').then((m) => m.PostsModule),
   },
   {
     path: '**',
