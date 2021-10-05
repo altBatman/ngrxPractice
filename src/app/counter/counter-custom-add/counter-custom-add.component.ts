@@ -2,7 +2,7 @@ import { getAuthorSelector } from './../store/counter.selectors';
 import { addValue, changeAuthor } from './../store/counter.actions';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
-import { AppState } from 'src/app/app.state';
+import { AppState } from 'src/app/appStore/app.state';
 
 @Component({
   selector: 'app-counter-custom-add',

@@ -1,6 +1,6 @@
 import { Post } from './../models/post.model';
 import { getPostById } from './../state/post.selector';
-import { AppState } from './../../app.state';
+import { AppState } from '../../appStore/app.state';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
